@@ -27,7 +27,7 @@ importers:
         specifier: ^1.7.15
         version: 1.7.15
 
-  apps/web:
+  packages/web:
     dependencies:
       next:
         specifier: 15.0.0-rc.0

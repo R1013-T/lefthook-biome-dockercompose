@@ -1,7 +1,7 @@
 services:
   web:
     build:
-      context: ./web
+      context: ./packages/web
       dockerfile: Dockerfile.prod
     container_name: web
     ports:
@@ -9,7 +9,7 @@ services:
     environment:
       - NODE_ENV=production
     env_file:
-      - ./web/.env.production
+      - ./packages/web/.env.production
 
 volumes:
   node_modules:
