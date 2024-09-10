@@ -1,18 +1,22 @@
-# web/Dockerfile.dev
-FROM node:20
+FROM node:20 AS base
 
+# Set working directory
 WORKDIR /app
 
+# Install pnpm
 RUN npm i -g pnpm
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
+# Copy root package.json and pnpm workspace files
+COPY package.json pnpm-workspace.yaml ./
+
+# Copy web package files
+COPY packages/web ./packages/web
 
 # Install dependencies
-RUN pnpm install
+RUN pnpm install --filter web...
 
-# Copy the rest of the application code
-COPY . .
+# Set working directory to web package
+WORKDIR /app/packages/web
 
 EXPOSE 3000
 

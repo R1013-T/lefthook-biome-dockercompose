@@ -2,10 +2,7 @@
   "name": "lefthook-dockercompose",
   "version": "1.0.0",
   "private": true,
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ],
+  "workspaces": ["packages/*"],
   "scripts": {
     "lint": "biome check --write --unsafe"
   },

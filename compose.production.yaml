@@ -1,15 +1,13 @@
+version: '3.8'
 services:
   web:
     build:
-      context: ./packages/web
-      dockerfile: Dockerfile.prod
-    container_name: web
+      context: .
+      dockerfile: packages/web/Dockerfile.prod
+    container_name: web-prod
     ports:
       - "3000:3000"
     environment:
       - NODE_ENV=production
     env_file:
       - ./packages/web/.env.production
-
-volumes:
-  node_modules:

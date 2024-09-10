@@ -1,22 +1,26 @@
-# web/Dockerfile.prod
+# Build stage
 FROM node:20 AS builder
 
 WORKDIR /app
 
 RUN npm i -g pnpm
 
-# Copy package files
-COPY package.json pnpm-lock.yaml ./
+# Copy root package.json and pnpm workspace files
+COPY package.json pnpm-workspace.yaml ./
+
+# Copy web package files
+COPY packages/web ./packages/web
 
 # Install dependencies
-RUN pnpm install
+RUN pnpm install --filter web...
 
-# Copy the rest of the application code
-COPY . .
+# Set working directory to web package
+WORKDIR /app/packages/web
 
 # Build the application
 RUN pnpm build
 
+# Production stage
 FROM node:20-alpine AS runner
 
 WORKDIR /app
@@ -24,10 +28,10 @@ WORKDIR /app
 RUN npm i -g pnpm
 
 # Copy necessary files from builder stage
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/.next ./.next
-COPY --from=builder /app/public ./public
-COPY --from=builder /app/next.config.mjs ./next.config.mjs
+COPY --from=builder /app/packages/web/package.json ./package.json
+COPY --from=builder /app/packages/web/.next ./.next
+COPY --from=builder /app/packages/web/public ./public
+COPY --from=builder /app/packages/web/next.config.mjs ./next.config.mjs
 
 # Install only production dependencies
 RUN pnpm install --prod

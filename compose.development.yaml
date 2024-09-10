@@ -1,13 +1,13 @@
 services:
   web:
     build:
-      context: ./packages/web
-      dockerfile: Dockerfile.dev
+      context: .
+      dockerfile: packages/web/Dockerfile.dev
     container_name: web
     volumes:
-      - ./packages/web:/app
-      - /app/node_modules
-      - /app/.next
+      - ./packages/web:/app/packages/web
+      - /app/packages/web/node_modules
+      - /app/packages/web/.next
     ports:
       - "3000:3000"
     environment:
