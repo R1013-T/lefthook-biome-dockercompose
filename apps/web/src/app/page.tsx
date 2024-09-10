@@ -1,8 +1,8 @@
 export default function Home() {
   return (
-      <main>
+    <main>
       <div>lefthook + docker compose</div>
-       <p>biome, commitlint, commitizen</p>
+      <p>biome, commitlint, commitizen</p>
     </main>
   );
 }
