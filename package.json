@@ -1,0 +1,12 @@
+{
+	"name": "lefthook-dockercompose",
+	"version": "1.0.0",
+	"private": true,
+	"workspaces": [
+		"web"
+	],
+	"scripts": {},
+	"devDependencies": {
+		"lefthook": "^1.7.15"
+	}
+}
