@@ -6,12 +6,7 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "biome lint",
-    "format": "biome format",
-    "check": "biome check",
-    "lint:fix": "biome lint --write",
-    "format:fix": "biome format --write",
-    "check:fix": "biome check --write"
+    "lint": "next lint"
   },
   "dependencies": {
     "next": "15.0.0-rc.0",
