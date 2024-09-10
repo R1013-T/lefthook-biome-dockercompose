@@ -7,60 +7,63 @@ const engine = require('cz-conventional-changelog/engine')
 /** @type {{ [K: string]: CommitType }} */
 const commitTypes = {
   feat: {
-    description: '新しい機能を追加する',
+    description: 'A new feature',
     title: 'Features',
     emoji: '✨',
   },
   fix: {
-    description: 'バグを修正する',
+    description: 'A bug fix',
     title: 'Bug Fixes',
     emoji: '🐛',
   },
   docs: {
-    description: 'ドキュメントのみを変更する',
+    description: 'Documentation only changes',
     title: 'Documentation',
     emoji: '📚',
   },
   style: {
-    description: 'コードの意味に影響を与えない変更（空白、フォーマット、セミコロンの欠落など）',
+    description:
+      'Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc)',
     title: 'Styles',
     emoji: '💎',
   },
   refactor: {
-    description: 'バグを修正したり機能を追加したりしないコードの変更',
+    description: 'A code change that neither fixes a bug nor adds a feature',
     title: 'Code Refactoring',
     emoji: '📦',
   },
   perf: {
-    description: 'パフォーマンスを向上させるコードの変更',
+    description: 'A code change that improves performance',
     title: 'Performance Improvements',
     emoji: '🚀',
   },
   test: {
-    description: 'テストの追加や既存のテストの修正',
+    description: 'Adding missing tests or correcting existing tests',
     title: 'Tests',
     emoji: '🚨',
   },
   build: {
-    description: 'ビルドシステムや外部依存関係に影響を与える変更（スコープの例：gulp、broccoli、npm）',
+    description:
+      'Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)',
     title: 'Builds',
     emoji: '🛠',
   },
   ci: {
-    description: 'CI設定ファイルとスクリプトの変更（スコープの例：Travis、Circle、BrowserStack、SauceLabs）',
+    description:
+      'Changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs)',
     title: 'Continuous Integrations',
     emoji: '⚙️',
   },
   chore: {
-    description: 'ソースコードやテストファイルを変更しないその他の変更',
+    description: "Other changes that don't modify src or test files",
     title: 'Chores',
     emoji: '♻️',
   },
   revert: {
-    description: '以前のコミットを元に戻す',
+    description: 'Reverts a previous commit',
     title: 'Reverts',
     emoji: '🗑',
-  }
+  },
 }
 
 module.exports = engine({
